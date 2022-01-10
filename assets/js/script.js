@@ -3,6 +3,7 @@ var  mainsection = document.getElementById("main");
 var startButtonEl = $('#start-btn');
 timeLeft = 60;
 var scorehistory
+var namehistory
 var para = document.createElement("h2");
 var title = document.getElementById("title");
 
@@ -87,7 +88,34 @@ function myTimer() {
         }
         mainsection.appendChild(scoreMsg); 
            
+     // Create a form synamically
+     var form = document.createElement("form");
+    //  form.setAttribute("method", "post");
+    //  form.setAttribute("action", "submit");
+
+     // Create an input element for emailID
+     var ID = document.createElement("input");
+     ID.setAttribute("type", "text");
+     ID.setAttribute("name", "User");
+     ID.setAttribute("placeholder", "Name");
+
+     // Create a submit button
+     var s = document.createElement("button");
+     s.setAttribute("class", "btn btn-info");
+     s.setAttribute("style", "submit");
+     s.setAttribute("value", "Submit");
+    s.innerText="Submit"
+     // Append the email_ID input to the form
+     form.append(ID); 
+
+     // Append the button to the form
+     form.append(s); 
+
+     mainsection.appendChild(form);
+
         }
+    
+
 
         function CreateQuestion(questionNumber) {
             notAnswered=true
@@ -165,6 +193,7 @@ function myTimer() {
           function ContinueButton(event) {
             ClearMain();
             if (CurrentQuestion===CorrectAnswers.length-1){
+                timeLeft=0
                 CreateResult();
             } else{
                 CreateQuestion(CurrentQuestion+1);
@@ -188,3 +217,13 @@ function myTimer() {
               points[j] = k
             }
         }
+
+        function logSubmit(event) {
+            ClearMain();
+            var title = document.createElement("h1");
+            title.innerText="Score History";
+             mainsection.appendChild(title); 
+             mainsection.appendChild(document.createElement("hr")); 
+          }
+
+        form.addEventListener('submit', logSubmit);
