@@ -1,6 +1,6 @@
 
 var startButtonEl = $('#start-btn');
-timeLeft = 60
+timeLeft = 3
 
 var para = document.createElement("h2");
 
@@ -23,19 +23,25 @@ var Correct2="d"
 var Correct3="d"
 var Correct4="d"
 
-
-
+var CorrectAnswers=[Correct1,Correct2,Correct3,Correct4]
+var Questions=[Q1,Q2,Q3,Q4]
 
 // Click event causes alert light start toggle
 startButtonEl.on('click', function () {
     
-    setInterval(myTimer, 1000);
+    interval =setInterval(myTimer, 1000);
     
-    para.innerText = "60";               
-    document.body.appendChild(para);   
+    para.innerText = timeLeft;               
+    document.body.appendChild(para);  
+    document.getElementById("Question").innerText=Q1;
 });
 
 function myTimer() {
-     timeLeft = timeLeft-1
+     timeLeft = timeLeft-1;
      para.innerText = timeLeft;
+     if (timeLeft<=0) {
+        document.getElementById("Question").innerText="Results";
+        clearInterval(interval)
+        para.remove
+     }
   }
