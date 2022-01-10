@@ -1,6 +1,6 @@
 
 var startButtonEl = $('#start-btn');
-
+timeLeft = 60
 
 
 // define questions
@@ -27,6 +27,11 @@ var Correct4="d"
 
 // Click event causes alert light start toggle
 startButtonEl.on('click', function () {
-
+    
+    setInterval(myTimer, 1000);
 });
 
+function myTimer() {
+     timeLeft = timeLeft-1
+    document.getElementById("start-btn").innerText = timeLeft;
+  }
