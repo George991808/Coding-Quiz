@@ -1,4 +1,4 @@
-
+var  mainsection = document.getElementById("main")
 var startButtonEl = $('#start-btn');
 timeLeft = 3
 
@@ -31,17 +31,27 @@ startButtonEl.on('click', function () {
     
     interval =setInterval(myTimer, 1000);
     
-    para.innerText = timeLeft;               
-    document.body.appendChild(para);  
+    para.innerText = "Time Left " + timeLeft;               
+    mainsection.appendChild(para);  
+    para.setAttribute("id", "timer")
     document.getElementById("Question").innerText=Q1;
 });
 
 function myTimer() {
      timeLeft = timeLeft-1;
-     para.innerText = timeLeft;
+     para.innerText = "Time Left " + timeLeft;   
      if (timeLeft<=0) {
         document.getElementById("Question").innerText="Results";
+        
         clearInterval(interval)
-        para.remove
+        ClearMain()
+       
+        
      }
   }
+
+  function ClearMain() {
+    while (mainsection.hasChildNodes()) {  
+        mainsection.removeChild(mainsection.firstChild);
+      }
+    }
