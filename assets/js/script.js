@@ -2,6 +2,7 @@
 var startButtonEl = $('#start-btn');
 timeLeft = 60
 
+var para = document.createElement("h2");
 
 // define questions
 var Q1="What is Life?"
@@ -29,9 +30,12 @@ var Correct4="d"
 startButtonEl.on('click', function () {
     
     setInterval(myTimer, 1000);
+    
+    para.innerText = "60";               
+    document.body.appendChild(para);   
 });
 
 function myTimer() {
      timeLeft = timeLeft-1
-    document.getElementById("start-btn").innerText = timeLeft;
+     para.innerText = timeLeft;
   }
