@@ -7,10 +7,10 @@ var para = document.createElement("h2");
 var title = document.getElementById("title");
 
 // define questions
-var Q1="What is Life?";
-var Q2="What is 2?";
-var Q3="What is 3?";
-var Q4="What is 4?";
+var Q1="Q1";
+var Q2="Q2";
+var Q3="Q3";
+var Q4="Q4?";
 
 var questionOrder = [0, 1, 2, 3];
 var optionsOrder = [0, 1, 2, 3];
@@ -91,7 +91,7 @@ function myTimer() {
 
         function CreateQuestion(questionNumber) {
             notAnswered=true
-            CurrentQuestion=questionNumber
+            
             CreateRandomOrder(optionsOrder);
             var title = document.createElement("h1");
             title.innerText=Questions[questionNumber];
@@ -164,10 +164,11 @@ function myTimer() {
           }
           function ContinueButton(event) {
             ClearMain();
-            if (CurrentQuestion===CorrectAnswers.length){
+            if (CurrentQuestion===CorrectAnswers.length-1){
                 CreateResult();
             } else{
                 CreateQuestion(CurrentQuestion+1);
+                CurrentQuestion+=1
             }
             
            
