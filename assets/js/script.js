@@ -8,31 +8,31 @@ var para = document.createElement("h2");
 var title = document.getElementById("title");
 
 // define questions
-var Q1="Q1";
-var Q2="Q2";
-var Q3="Q3";
-var Q4="Q4?";
+var Q1="What is a .css file?";
+var Q2="Which isnt a Javascript data type?";
+var Q3="how many tracks in adeles latest album";
+var Q4="What is an object?";
 
 var questionOrder = [0, 1, 2, 3];
 var optionsOrder = [0, 1, 2, 3];
 
 // Define wrong answers
-var Wrong1=["a","b","c"];
-var Wrong2=["a","b","c"];
-var Wrong3=["a","b","c"];
-var Wrong4=["a","b","c"];
+var Wrong1=["a banana","subsidiary of CIA","all of the above"];
+var Wrong2=["Number","String","boolean"];
+var Wrong3=["Too many","not enough","2"];
+var Wrong4=["not sure","boolean","3"];
 
 // Define correct answers
-var Correct1="d";
-var Correct2="d";
-var Correct3="d";
-var Correct4="d";
+var Correct1="Cascading Style Sheets";
+var Correct2="milkshake";
+var Correct3="12";
+var Correct4="abstract data type";
 var CorrectAnswer;
 var CurrentQuestion=0;
 var CorrectAnswers=[Correct1,Correct2,Correct3,Correct4];
 var Questions=[Q1,Q2,Q3,Q4];
 var WrongAnswers=[Wrong1,Wrong2,Wrong3,Wrong4];
-
+var form 
 var Options1=Wrong1;
 Options1.push(Correct1);
 var Options2=Wrong2;
@@ -91,7 +91,7 @@ function myTimer() {
      // Create a form synamically
      var form = document.createElement("form");
     //  form.setAttribute("method", "post");
-    //  form.setAttribute("action", "submit");
+   // form.setAttribute("action", "submit");
 
      // Create an input element for emailID
      var ID = document.createElement("input");
@@ -196,7 +196,7 @@ function myTimer() {
                 timeLeft=0
                 CreateResult();
             } else{
-                CreateQuestion(CurrentQuestion+1);
+                CreateQuestion(questionOrder[CurrentQuestion+1]);
                 CurrentQuestion+=1
             }
             
@@ -226,4 +226,4 @@ function myTimer() {
              mainsection.appendChild(document.createElement("hr")); 
           }
 
-        form.addEventListener('submit', logSubmit);
+       // form.addEventListener('submit', logSubmit);
