@@ -1,7 +1,7 @@
 var score;
 var  mainsection = document.getElementById("main");
 var startButtonEl = $('#start-btn');
-timeLeft = 3;
+timeLeft = 60;
 
 var para = document.createElement("h2");
 var title = document.getElementById("title");
@@ -85,9 +85,20 @@ function myTimer() {
             var title = document.createElement("h1");
             title.innerText=Questions[questionNumber];
              mainsection.appendChild(title); 
-
-
              mainsection.appendChild(document.createElement("hr")); 
+
+
+             for (let i = 0; i < optionsOrder.length; i++) {
+                var button = document.createElement("button");
+                button.innerText=Options[questionNumber][optionsOrder[i]];
+                button.setAttribute("class","btn btn-info")
+                 mainsection.appendChild(button); 
+                 mainsection.appendChild(document.createElement("hr")); 
+              }
+          
+
+
+            // mainsection.appendChild(document.createElement("hr")); 
             para.innerText = "Time Left " + timeLeft;               
             mainsection.appendChild(para);  
             para.setAttribute("id", "timer")
