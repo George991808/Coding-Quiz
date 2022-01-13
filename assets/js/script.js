@@ -45,14 +45,24 @@ Options4.push(Correct4);
 var Options = [Options1, Options2, Options3, Options4];
 
 // Click event causes alert light start toggle
-startButtonEl.on("click", function () {
+startButtonEl.on("click", start());
+//   score = 0;
+//   CreateRandomOrder(questionOrder);
+
+//   interval = setInterval(myTimer, 1000);
+//   ClearMain();
+//   CreateQuestion(questionOrder[0]);
+// });
+
+function start() {
+  CurrentQuestion = 0;
+  timeLeft = 60;
   score = 0;
   CreateRandomOrder(questionOrder);
-
   interval = setInterval(myTimer, 1000);
   ClearMain();
   CreateQuestion(questionOrder[0]);
-});
+}
 //Timer used for the quiz
 function myTimer() {
   timeLeft = timeLeft - 1;
@@ -150,6 +160,9 @@ mainsection.addEventListener("click", (event) => {
     if (event.target.id === "continue") {
       ContinueButton(event);
     }
+    if (event.target.id === "restart") {
+      start();
+    }
   }
 });
 
@@ -210,9 +223,16 @@ function logSubmit(event) {
   mainsection.appendChild(list);
   for (let i = 0; i < scorehistory.length; i++) {
     var scoreitem = document.createElement("li");
-    scoreitem.innerText = scorehistory[i];
+    scoreitem.innerText = "Adele " + scorehistory[i];
     list.appendChild(scoreitem);
   }
+
+  var button = document.createElement("button");
+  button.innerText = "Restart Quiz";
+  button.setAttribute("class", "btn btn-info");
+  button.setAttribute("id", "restart");
+  mainsection.appendChild(button);
+  mainsection.appendChild(document.createElement("hr"));
 }
 
 mainsection.addEventListener("submit", logSubmit);
