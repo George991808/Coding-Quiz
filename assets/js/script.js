@@ -2,8 +2,8 @@ var score;
 var mainsection = document.getElementById("main");
 var startButtonEl = $("#start-btn");
 timeLeft = 60;
-var scorehistory;
-var namehistory;
+var scorehistory = [];
+var namehistory = [];
 var para = document.createElement("h2");
 var title = document.getElementById("title");
 
@@ -204,6 +204,15 @@ function logSubmit(event) {
   title.innerText = "Score History";
   mainsection.appendChild(title);
   mainsection.appendChild(document.createElement("hr"));
+  scorehistory.push(score);
+  //namehistory.push(form.ID.User);
+  var list = document.createElement("ul");
+  mainsection.appendChild(list);
+  for (let i = 0; i < scorehistory.length; i++) {
+    var scoreitem = document.createElement("li");
+    scoreitem.innerText = scorehistory[i];
+    list.appendChild(scoreitem);
+  }
 }
 
 mainsection.addEventListener("submit", logSubmit);
